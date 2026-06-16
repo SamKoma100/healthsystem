@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HealthConnect SL helps communities in Sierra Leone find clinics, book appointments, check health guidance, and contact emergency support.">
+  <title>HealthConnect SL | Sierra Leone Health Services</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="HealthConnect SL home">
+        <span class="brand-mark">+</span>
+        <span>HealthConnect SL</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="#services">Services</a>
+        <a href="#clinics">Clinics</a>
+        <a href="#tips">Health Tips</a>
+        <a href="#appointment">Appointment</a>
+        <button class="emergency-button" type="button" id="openEmergency">Emergency</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">Digital public health support for Sierra Leone</p>
+        <h1>Find care faster, book appointments, and get trusted health guidance.</h1>
+        <p class="hero-copy">A community health website designed for families, students, and workers who need simple access to clinics, medicine updates, emergency contacts, and prevention advice.</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#appointment">Book Appointment</a>
+          <a class="secondary-button" href="#clinics">Find a Clinic</a>
+        </div>
+      </div>
+      <img class="hero-image" src="assets/hero-healthconnect.png" alt="Illustration of a Sierra Leone community clinic with people waiting for care">
+    </section>
+
+    <section class="stats-band" aria-label="Health service highlights">
+      <div>
+        <strong>24/7</strong>
+        <span>Emergency guidance</span>
+      </div>
+      <div>
+        <strong>8</strong>
+        <span>District clinic listings</span>
+      </div>
+      <div>
+        <strong>3 min</strong>
+        <span>Appointment request</span>
+      </div>
+      <div>
+        <strong>100%</strong>
+        <span>Responsive website</span>
+      </div>
+    </section>
+
+    <section class="section" id="problem">
+      <div class="section-intro">
+        <p class="eyebrow">Problem solved</p>
+        <h2>Many people struggle to know where to go before illness becomes severe.</h2>
+        <p>HealthConnect SL reduces confusion by organizing basic health services, nearby facility details, appointment requests, and prevention messages in one mobile-friendly place.</p>
+      </div>
+      <div class="problem-grid">
+        <article>
+          <span class="icon-pill red">!</span>
+          <h3>Late treatment</h3>
+          <p>Families may delay care because they do not know the closest facility or available service.</p>
+        </article>
+        <article>
+          <span class="icon-pill blue">i</span>
+          <h3>Information gaps</h3>
+          <p>Patients need clear advice for malaria, maternal care, dehydration, and emergency warning signs.</p>
+        </article>
+        <article>
+          <span class="icon-pill green">✓</span>
+          <h3>Digital access</h3>
+          <p>The website works on phones and laptops, helping users connect with services quickly.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section service-section" id="services">
+      <div class="section-intro">
+        <p class="eyebrow">Core services</p>
+        <h2>Care options organized for everyday use.</h2>
+      </div>
+      <div class="service-grid">
+        <article class="service-card">
+          <img src="assets/clinic-network.png" alt="Clinic network illustration">
+          <div>
+            <h3>Clinic Finder</h3>
+            <p>Filter clinics by district and service so people can decide where to seek help.</p>
+          </div>
+        </article>
+        <article class="service-card">
+          <img src="assets/maternal-care.png" alt="Maternal and child care illustration">
+          <div>
+            <h3>Maternal & Child Care</h3>
+            <p>Promotes antenatal care, immunization, nutrition, and safe follow-up visits.</p>
+          </div>
+        </article>
+        <article class="service-card">
+          <img src="assets/pharmacy-support.png" alt="Medicine availability illustration">
+          <div>
+            <h3>Medicine & Advice</h3>
+            <p>Shares medicine reminders, health tips, and first-response guidance before referral.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split-section" id="clinics">
+      <div>
+        <p class="eyebrow">Clinic directory</p>
+        <h2>Search health facilities by district.</h2>
+        <p>Choose a district to show example clinics and services. This can be expanded with real Ministry of Health data in a future version.</p>
+        <label class="select-label" for="districtFilter">District</label>
+        <select id="districtFilter">
+          <option value="all">All districts</option>
+          <option value="western">Western Area</option>
+          <option value="bo">Bo</option>
+          <option value="kenema">Kenema</option>
+          <option value="makeni">Bombali / Makeni</option>
+        </select>
+      </div>
+      <div class="clinic-list" id="clinicList" aria-live="polite"></div>
+    </section>
+
+    <section class="section tips-section" id="tips">
+      <div class="section-intro">
+        <p class="eyebrow">Health tips</p>
+        <h2>Simple prevention messages for community awareness.</h2>
+      </div>
+      <div class="tip-panel">
+        <button class="tip-arrow" type="button" id="prevTip" aria-label="Previous health tip">‹</button>
+        <article id="tipContent"></article>
+        <button class="tip-arrow" type="button" id="nextTip" aria-label="Next health tip">›</button>
+      </div>
+    </section>
+
+    <section class="section checker-section">
+      <div>
+        <p class="eyebrow">Basic interaction</p>
+        <h2>Quick symptom guidance.</h2>
+        <p>Select a common symptom to receive a simple next step. This is not a diagnosis; it encourages safe action and referral.</p>
+      </div>
+      <form class="checker" id="symptomForm">
+        <label for="symptom">Common symptom</label>
+        <select id="symptom" required>
+          <option value="">Choose symptom</option>
+          <option value="fever">Fever or chills</option>
+          <option value="pregnancy">Pregnancy concern</option>
+          <option value="diarrhoea">Diarrhoea or dehydration</option>
+          <option value="breathing">Difficulty breathing</option>
+        </select>
+        <button type="submit">Get Guidance</button>
+        <p class="guidance-result" id="guidanceResult" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="section appointment-section" id="appointment">
+      <div>
+        <p class="eyebrow">Appointment form</p>
+        <h2>Request a clinic appointment.</h2>
+        <p>Fill in the form and the page will show a confirmation summary. In a real deployment, this can connect to a database or email service.</p>
+      </div>
+      <form class="appointment-form" id="appointmentForm">
+        <div class="form-row">
+          <label for="fullName">Full name</label>
+          <input id="fullName" name="fullName" type="text" placeholder="Enter your name" required>
+        </div>
+        <div class="form-row">
+          <label for="phone">Phone number</label>
+          <input id="phone" name="phone" type="tel" placeholder="+232 ..." required>
+        </div>
+        <div class="form-row">
+          <label for="district">District</label>
+          <select id="district" name="district" required>
+            <option value="">Select district</option>
+            <option>Western Area</option>
+            <option>Bo</option>
+            <option>Kenema</option>
+            <option>Bombali / Makeni</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="service">Service needed</label>
+          <select id="service" name="service" required>
+            <option value="">Select service</option>
+            <option>General consultation</option>
+            <option>Maternal care</option>
+            <option>Child immunization</option>
+            <option>Pharmacy support</option>
+          </select>
+        </div>
+        <div class="form-row full">
+          <label for="message">Additional notes</label>
+          <textarea id="message" name="message" rows="4" placeholder="Briefly describe what you need"></textarea>
+        </div>
+        <button class="primary-button form-submit" type="submit">Submit Request</button>
+        <p class="form-message" id="formMessage" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <a class="brand" href="#home">
+        <span class="brand-mark">+</span>
+        <span>HealthConnect SL</span>
+      </a>
+      <p>Student web design project for a Sierra Leone health service solution.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#appointment">Appointment</a>
+      <a href="docs/project-documentation.md">Documentation</a>
+    </div>
+  </footer>
+
+  <dialog class="emergency-modal" id="emergencyModal">
+    <div class="modal-header">
+      <h2>Emergency Support</h2>
+      <button type="button" id="closeEmergency" aria-label="Close emergency panel">×</button>
+    </div>
+    <p>If someone is unconscious, bleeding heavily, struggling to breathe, or having severe chest pain, seek emergency help immediately.</p>
+    <ul>
+      <li>Call the nearest hospital or local emergency contact.</li>
+      <li>Keep the patient calm and do not give unknown medicine.</li>
+      <li>For fever with confusion, severe dehydration, or pregnancy bleeding, go to a health facility urgently.</li>
+    </ul>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
